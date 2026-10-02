@@ -1,0 +1,13 @@
+Device: cpu
+
+-- Building dataset --------------------------
+Opening memmap: patches_images.npy
+  -> 5248 patches  shape=(12, 256, 256)
+  Train patches: 4199  |  Val patches: 1049
+
+-- Building model ----------------------------
+  Trainable params: 3,783,173
+
+-- Training ----------------------------------
+Epoch 001/20  train loss=3.0924 dice=0.1987  |  val loss=1.0269 dice=0.5311 IoU=0.3667
+  Saved best model -> checkpoints_ca/best_model.pth  (dice=0.5311)

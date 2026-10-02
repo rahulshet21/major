@@ -1,0 +1,62 @@
+======================================================================
+  CANADA WILDFIRE S1/S2/ALOS HDF5 DATASET STRUCTURE REPORT
+======================================================================
+
+File Path: candata/wildfire-s1s2-alos-dataset-canada-uint16.h5
+Root Groups (Years): ['2017', '2018', '2019']
+
+Year 2017: 132 events
+Year 2018: 138 events
+Year 2019: 58 events
+
+Total Events across all years: 328
+
+--- Sample Event Structure: 2017/CA_2017_AB_204 ---
+  Dataset: alos         | Shape: (2, 3, 905, 1604)      | Dtype: int16
+  Dataset: alos_band    | Shape: (3,)                   | Dtype: object
+           Values: ['ND', 'HV', 'HH']
+  Dataset: aux          | Shape: (3, 905, 1604)         | Dtype: int16
+  Dataset: aux_band     | Shape: (3,)                   | Dtype: object
+           Values: ['landCover', 'elevation', 'slope']
+  Dataset: mask         | Shape: (3, 905, 1604)         | Dtype: int16
+  Dataset: mask_band    | Shape: (3,)                   | Dtype: object
+           Values: ['poly', 'modis', 'firecci']
+  Dataset: s1           | Shape: (2, 3, 905, 1604)      | Dtype: int16
+  Dataset: s1_band      | Shape: (3,)                   | Dtype: object
+           Values: ['ND', 'VH', 'VV']
+  Dataset: s2           | Shape: (2, 3, 905, 1604)      | Dtype: int16
+  Dataset: s2_band      | Shape: (3,)                   | Dtype: object
+           Values: ['B4', 'B8', 'B12']
+  Dataset: time         | Shape: (2,)                   | Dtype: object
+           Values: ['pre', 'post']
+  Dataset: x            | Shape: (1604,)                | Dtype: float64
+  Dataset: y            | Shape: (905,)                 | Dtype: float64
+
+======================================================================
+  HOW TO OPEN AND VIEW THIS .H5 FILE ON MACOS
+======================================================================
+
+1. Python (Recommended for Data Science & Automation):
+   Using h5py:
+     import h5py
+     with h5py.File('candata/wildfire-s1s2-alos-dataset-canada-uint16.h5', 'r') as f:
+         s1_data = f['2017/CA_2017_BC_1157/s1'][:] # shape (2, 3, H, W)
+         s2_data = f['2017/CA_2017_BC_1157/s2'][:] # shape (2, 3, H, W)
+         mask    = f['2017/CA_2017_BC_1157/mask'][:] # shape (3, H, W)
+
+   Using xarray & h5netcdf:
+     import xarray as xr
+     ds = xr.open_dataset('candata/wildfire-s1s2-alos-dataset-canada-uint16.h5', 
+                          engine='h5netcdf', group='2017/CA_2017_BC_1157')
+     print(ds)
+
+2. GUI Application: HDFView (macOS)
+   - Download HDFView for macOS from NCSA / HDF Group website (https://www.hdfgroup.org/downloads/hdfview/).
+   - Install via DMG or Homebrew (if available: brew install --cask hdfview).
+   - Launch HDFView -> File -> Open -> Select wildfire-s1s2-alos-dataset-canada-uint16.h5.
+   - Navigate tree view: 2017 -> CA_2017_BC_1157 -> s1 / s2 / mask.
+   - Double-click datasets to view raw 2D/3D slice numerical tables or image visualizer.
+
+3. VS Code / Cursor Extension:
+   - Install 'vscode-hdf5' or 'H5 Web' extension from the Extensions Marketplace.
+   - Open the file directly in the editor sidebar to visually inspect datasets and metadata.
