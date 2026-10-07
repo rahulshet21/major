@@ -1,0 +1,12 @@
+streamlit>=1.36.0
+pandas
+numpy
+plotly
+Pillow
+torch
+torchvision
+h5py
+segmentation-models-pytorch
+scikit-learn
+joblib
+matplotlib

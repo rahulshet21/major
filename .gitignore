@@ -4,20 +4,32 @@
 __pycache__/
 *.py[cod]
 
+# Ignore training outputs and results
 **/checkpoints/
 **/checkpoints_ca/
+**/results/
+preview_results/
+wandb/
+runs/
+*.log
+
+# Ignore large datasets and data files
 **/dataset/
+**/candata/
 **/processed/
 **/processed22/
-results/
-preview_results/
-
 *.h5
 *.hdf5
 *.npy
 *.npz
 *.zip
+*.tif
+*.tiff
+*mask*
+*label*
+
+# Ignore any intermediate model files, except specific deployment ones
+# We will manually `git add -f` the required models, so it's safe to ignore everything else
 *.pth
 *.pt
-*.tif
-*.tiffpromp/CA-LMoETransUNet/
+*.joblib
